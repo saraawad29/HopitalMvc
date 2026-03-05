@@ -48,6 +48,10 @@ public class ApplicationDbContext : DbContext
             .HasIndex(d => d.LicenseNumber)
             .IsUnique();
 
+        // Le comportement choisi est : DeleteBehavior.Restrict
+        // car Un médecin est une entité importante du système.
+        // Supprimer un département ne doit pas supprimer les médecins.
+        // Cela évite une perte de données accidentelle.
         // Relation Department 1..* Doctors (Restrict recommandé)
         modelBuilder.Entity<Doctor>()
             .HasOne(d => d.Department)

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HopitalMvcSqlite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+762150097e409b9c2615e9e97f01a35ca8ea908a")]
 [assembly: System.Reflection.AssemblyProductAttribute("HopitalMvcSqlite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HopitalMvcSqlite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -58,7 +58,8 @@ public class PatientsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Patient patient)
     {
-        // ✅ Validation DateOfBirth ici
+        // Validation métier : la date de naissance doit être dans le passé.
+        // Si la date est aujourd'hui ou future, on bloque l'enregistrement.
         if (patient.DateOfBirth >= DateTime.Today)
         {
             ModelState.AddModelError(nameof(patient.DateOfBirth),
