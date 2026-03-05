@@ -1,0 +1,44 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Consultation>
+
+<h1>Consultations</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Planifier</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Patient</th>
+            <th>Médecin</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var c in Model)
+{
+        <tr>
+            <td>@c.Date</td>
+            <td>@c.Patient?.LastName @c.Patient?.FirstName</td>
+            <td>@c.Doctor?.LastName @c.Doctor?.FirstName</td>
+            <td>@c.Status</td>
+            <td>
+                <a asp-action="EditStatus" asp-route-id="@c.Id" class="btn btn-sm btn-outline-primary">Statut</a>
+
+                @if (c.Status != "Cancelled")
+                {
+                    <a asp-action="Cancel" asp-route-id="@c.Id" class="btn btn-sm btn-outline-danger">Annuler</a>
+                }
+
+                <a asp-action="UpcomingForPatient" asp-route-patientId="@c.PatientId"
+                   class="btn btn-sm btn-outline-secondary">À venir patient</a>
+
+                <a asp-action="TodayForDoctor" asp-route-doctorId="@c.DoctorId"
+                   class="btn btn-sm btn-outline-secondary">Aujourd’hui médecin</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

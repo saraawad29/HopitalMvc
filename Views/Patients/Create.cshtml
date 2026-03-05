@@ -1,0 +1,85 @@
+@model HopitalMvcSqlite.Models.Patient
+
+@{
+    ViewData["Title"] = "Ajouter Patient";
+}
+
+<h1>Ajouter un patient</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="FileNumber" class="form-label"></label>
+        <input asp-for="FileNumber" class="form-control" />
+        <span asp-validation-for="FileNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId" class="form-label">Département</label>
+        <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments">
+            <option value="">-- Choisir un département --</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+    <label asp-for="Address.Street"></label>
+    <input asp-for="Address.Street" class="form-control" />
+    <span asp-validation-for="Address.Street" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address.City"></label>
+        <input asp-for="Address.City" class="form-control" />
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address.PostalCode"></label>
+        <input asp-for="Address.PostalCode" class="form-control" />
+        <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address.Country"></label>
+        <input asp-for="Address.Country" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a asp-action="Index" class="btn btn-secondary">Retour</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

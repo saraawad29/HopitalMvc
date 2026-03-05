@@ -1,0 +1,35 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Department>
+
+@{
+    ViewData["Title"] = "Départements";
+}
+
+<h1>Départements</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ajouter un département</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Localisation</th>
+            <th>Responsable</th> 
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var d in Model)
+{
+        <tr>
+            <td>@d.Name</td>
+            <td>@d.Location</td>
+            <td>@(d.MedicalChief == null ? "-" : $"{d.MedicalChief.LastName} {d.MedicalChief.FirstName}")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@d.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

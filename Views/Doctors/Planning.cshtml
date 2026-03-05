@@ -1,0 +1,41 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Consultation>
+
+@{
+    var doctor = (HopitalMvcSqlite.Models.Doctor)ViewBag.Doctor;
+}
+
+<h1>Planning médecin</h1>
+
+<div class="mb-3">
+    <strong>Dr @doctor.LastName @doctor.FirstName</strong><br />
+    Département : @(doctor.Department?.Name ?? "-")
+</div>
+
+@if (!Model.Any())
+{
+    <p>Aucune consultation à venir.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Patient</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var c in Model)
+{
+            <tr>
+                <td>@c.Date</td>
+                <td>@(c.Patient == null ? "-" : $"{c.Patient.LastName} {c.Patient.FirstName}")</td>
+                <td>@c.Status</td>
+            </tr>
+}
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Doctors" asp-action="Index" class="btn btn-secondary">Retour</a>

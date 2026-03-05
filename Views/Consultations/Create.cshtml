@@ -1,0 +1,28 @@
+@model HopitalMvcSqlite.Models.Consultation
+
+<h1>Planifier Consultation</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label>Date</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Patient</label>
+        <select asp-for="PatientId" asp-items="ViewBag.Patients" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label>Médecin</label>
+        <select asp-for="DoctorId" asp-items="ViewBag.Doctors" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

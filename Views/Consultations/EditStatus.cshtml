@@ -1,0 +1,20 @@
+@model HopitalMvcSqlite.Models.Consultation
+
+<h1>Modifier Statut Consultation</h1>
+
+<form asp-action="EditStatus" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <strong>Patient :</strong> @Model.Patient?.LastName<br />
+        <strong>Médecin :</strong> @Model.Doctor?.LastName<br />
+        <strong>Date :</strong> @Model.Date
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="status" asp-items="ViewBag.StatusList" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>

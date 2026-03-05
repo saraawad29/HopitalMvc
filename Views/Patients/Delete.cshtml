@@ -1,0 +1,16 @@
+@model HopitalMvcSqlite.Models.Patient
+
+<h1>Supprimer Patient</h1>
+
+<h3>Confirmer la suppression ?</h3>
+
+<div>
+    <strong>@Model.LastName @Model.FirstName</strong><br />
+    Email: @Model.Email
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+</form>

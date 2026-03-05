@@ -1,0 +1,43 @@
+@model HopitalMvcSqlite.Models.Patient
+
+<h1>Fiche patient</h1>
+
+<div class="mb-3">
+    <strong>@Model.LastName @Model.FirstName</strong><br />
+    Dossier : @Model.FileNumber<br />
+    Naissance : @Model.DateOfBirth.ToString("yyyy-MM-dd")<br />
+    Email : @Model.Email<br />
+    Téléphone : @Model.Phone<br />
+    Département : @(Model.Department?.Name ?? "-")
+</div>
+
+<h2>Consultations</h2>
+
+@if (!Model.Consultations.Any())
+{
+    <p>Aucune consultation.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Médecin</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var c in Model.Consultations.OrderByDescending(x => x.Date))
+{
+            <tr>
+                <td>@c.Date</td>
+                <td>@(c.Doctor == null ? "-" : $"{c.Doctor.LastName} {c.Doctor.FirstName}")</td>
+                <td>@c.Status</td>
+            </tr>
+}
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-secondary">Retour</a>

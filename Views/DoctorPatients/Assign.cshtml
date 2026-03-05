@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Affecter Patient à Médecin";
+}
+
+<h1>Affecter Patient à Médecin</h1>
+
+<form asp-action="Assign" method="post">
+    <div class="mb-3">
+        <label>Médecin</label>
+        <select name="doctorId" class="form-control" asp-items="ViewBag.Doctors"></select>
+    </div>
+
+    <div class="mb-3">
+        <label>Patient</label>
+        <select name="patientId" class="form-control" asp-items="ViewBag.Patients"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Affecter</button>
+</form>

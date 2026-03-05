@@ -1,0 +1,22 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Consultation>
+
+<h1>Consultations à venir - @ViewBag.Patient?.LastName @ViewBag.Patient?.FirstName</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Médecin</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var c in Model)
+{
+        <tr>
+            <td>@c.Date</td>
+            <td>@c.Doctor?.LastName</td>
+            <td>@c.Status</td>
+        </tr>
+}
+    </tbody>
+</table>

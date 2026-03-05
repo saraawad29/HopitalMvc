@@ -1,0 +1,23 @@
+@model IEnumerable<HopitalMvcSqlite.Models.ViewModels.DepartmentStatsVm>
+
+<h1>Statistiques des départements</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Département</th>
+            <th>Nb médecins</th>
+            <th>Nb consultations</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var s in Model)
+{
+        <tr>
+            <td>@s.DepartmentName</td>
+            <td>@s.DoctorsCount</td>
+            <td>@s.ConsultationsCount</td>
+        </tr>
+}
+    </tbody>
+</table>

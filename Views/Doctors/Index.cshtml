@@ -1,0 +1,36 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Doctor>
+
+<h1>Médecins</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ajouter un médecin</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Licence</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Spécialité</th>
+            <th>Département</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var d in Model)
+{
+        <tr>
+            <td>@d.LicenseNumber</td>
+            <td>@d.LastName</td>
+            <td>@d.FirstName</td>
+            <td>@d.Specialty</td>
+            <td>@d.Department?.Name</td>
+            <td>
+                <a asp-action="Planning" asp-route-id="@d.Id"
+                   class="btn btn-sm btn-outline-secondary">Planning</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

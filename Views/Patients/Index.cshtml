@@ -1,0 +1,59 @@
+@model IEnumerable<HopitalMvcSqlite.Models.Patient>
+
+<h1>Patients</h1>
+
+<form method="get" class="mb-3">
+    <input type="text" name="q" value="@ViewBag.Q" placeholder="Rechercher par nom..." class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Rechercher</button>
+</form>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nouveau Patient</a>
+</p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Département</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var p in Model)
+{
+        <tr>
+            <td>@p.LastName</td>
+            <td>@p.FirstName</td>
+            <td>@p.Email</td>
+            <td>@p.Department?.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-danger">Delete</a>
+                <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-sm btn-info">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (ViewBag.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+@for (int i = 1; i <= ViewBag.TotalPages; i++)
+{
+            <li class="page-item @(i == ViewBag.Page ? "active" : "")">
+                <a class="page-link" href="?page=@i&q=@ViewBag.Q">@i</a>
+            </li>
+}
+        </ul>
+    </nav>
+}

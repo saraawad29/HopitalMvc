@@ -1,0 +1,65 @@
+@model HopitalMvcSqlite.Models.Department
+
+@{
+    ViewData["Title"] = "Modifier Département";
+}
+
+<h1>Modifier un département</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Location" class="form-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+    <label asp-for="ContactAddress.Street">Rue</label>
+    <input asp-for="ContactAddress.Street" class="form-control" />
+    <span asp-validation-for="ContactAddress.Street" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ContactAddress.City">Ville</label>
+        <input asp-for="ContactAddress.City" class="form-control" />
+        <span asp-validation-for="ContactAddress.City" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ContactAddress.PostalCode">Code postal</label>
+        <input asp-for="ContactAddress.PostalCode" class="form-control" />
+        <span asp-validation-for="ContactAddress.PostalCode" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ContactAddress.Country">Pays</label>
+        <input asp-for="ContactAddress.Country" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Responsable médical (MedicalChief)</label>
+        <select asp-for="MedicalChiefId" class="form-control" asp-items="ViewBag.MedicalChiefs">
+            <option value="">-- Aucun --</option>
+        </select>
+        <span asp-validation-for="MedicalChiefId" class="text-danger"></span>
+        <small class="text-muted">
+            Seuls les médecins appartenant à ce département sont proposés.
+        </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a asp-action="Index" class="btn btn-secondary">Retour</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
